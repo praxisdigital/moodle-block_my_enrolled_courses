@@ -24,7 +24,7 @@
  */
 
 defined('MOODLE_INTERNAL') || die();
-require_once('locallib.php');
+//require_once('locallib.php');
 
 class block_my_enrolled_courses extends block_base {
     public function init() {
@@ -32,12 +32,9 @@ class block_my_enrolled_courses extends block_base {
     }
 
     public function get_content() {
-        global $CFG, $PAGE;
+        global $CFG, $PAGE, $CFG;
+	    require_once($CFG->dirroot . '/blocks/my_enrolled_courses/locallib.php');
 
-        ?>
-				<script src="<?php echo $CFG->wwwroot . '/blocks/my_enrolled_courses/js/jquery-1.10.2.js'; ?>"></script>
-				<script src="<?php echo $CFG->wwwroot . '/blocks/my_enrolled_courses/js/jquery-ui.min.js'; ?>"></script>
-				<?php
         $PAGE->requires->js('/blocks/my_enrolled_courses/js/sorting.js');
         $PAGE->requires->data_for_js('wwwroot', $CFG->wwwroot);
         $PAGE->requires->css('/blocks/my_enrolled_courses/style.css');
